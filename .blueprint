@@ -1,0 +1,132 @@
+created:
+    - database/factories/McpServerFactory.php
+    - database/factories/McpToolFactory.php
+    - database/factories/WebhookEndpointFactory.php
+    - database/factories/WebhookDeliveryFactory.php
+    - database/factories/ConversationFactory.php
+    - database/factories/ChatMessageFactory.php
+    - database/factories/AgentTaskFactory.php
+    - database/factories/VillaFactory.php
+    - database/factories/VillaRateFactory.php
+    - database/factories/VillaBookingFactory.php
+    - database/factories/TaxiFactory.php
+    - database/factories/TaxiBookingFactory.php
+    - database/factories/RestaurantFactory.php
+    - database/factories/RestaurantBookingFactory.php
+    - database/factories/WineryFactory.php
+    - database/factories/WineryVisitFactory.php
+    - database/factories/TourFactory.php
+    - database/factories/TourBookingFactory.php
+    - database/factories/ProductCategoryFactory.php
+    - database/factories/ProductFactory.php
+    - database/factories/OrderFactory.php
+    - database/factories/OrderItemFactory.php
+    - database/factories/ItineraryFactory.php
+    - database/factories/ItineraryItemFactory.php
+    - database/factories/PaymentFactory.php
+    - database/factories/InvoiceFactory.php
+    - database/migrations/2026_08_01_204003_create_mcp_servers_table.php
+    - database/migrations/2026_08_01_204004_create_mcp_tools_table.php
+    - database/migrations/2026_08_01_204005_create_webhook_endpoints_table.php
+    - database/migrations/2026_08_01_204006_create_webhook_deliveries_table.php
+    - database/migrations/2026_08_01_204007_create_conversations_table.php
+    - database/migrations/2026_08_01_204008_create_chat_messages_table.php
+    - database/migrations/2026_08_01_204009_create_agent_tasks_table.php
+    - database/migrations/2026_08_01_204010_create_villas_table.php
+    - database/migrations/2026_08_01_204011_create_villa_rates_table.php
+    - database/migrations/2026_08_01_204012_create_villa_bookings_table.php
+    - database/migrations/2026_08_01_204013_create_taxis_table.php
+    - database/migrations/2026_08_01_204014_create_taxi_bookings_table.php
+    - database/migrations/2026_08_01_204015_create_restaurants_table.php
+    - database/migrations/2026_08_01_204016_create_restaurant_bookings_table.php
+    - database/migrations/2026_08_01_204017_create_wineries_table.php
+    - database/migrations/2026_08_01_204018_create_winery_visits_table.php
+    - database/migrations/2026_08_01_204019_create_tours_table.php
+    - database/migrations/2026_08_01_204020_create_tour_bookings_table.php
+    - database/migrations/2026_08_01_204021_create_product_categories_table.php
+    - database/migrations/2026_08_01_204022_create_products_table.php
+    - database/migrations/2026_08_01_204023_create_orders_table.php
+    - database/migrations/2026_08_01_204024_create_order_items_table.php
+    - database/migrations/2026_08_01_204025_create_itineraries_table.php
+    - database/migrations/2026_08_01_204026_create_itinerary_items_table.php
+    - database/migrations/2026_08_01_204027_create_payments_table.php
+    - database/migrations/2026_08_01_204028_create_invoices_table.php
+    - app/Models/McpServer.php
+    - app/Models/McpTool.php
+    - app/Models/WebhookEndpoint.php
+    - app/Models/WebhookDelivery.php
+    - app/Models/Conversation.php
+    - app/Models/ChatMessage.php
+    - app/Models/AgentTask.php
+    - app/Models/Villa.php
+    - app/Models/VillaRate.php
+    - app/Models/VillaBooking.php
+    - app/Models/Taxi.php
+    - app/Models/TaxiBooking.php
+    - app/Models/Restaurant.php
+    - app/Models/RestaurantBooking.php
+    - app/Models/Winery.php
+    - app/Models/WineryVisit.php
+    - app/Models/Tour.php
+    - app/Models/TourBooking.php
+    - app/Models/ProductCategory.php
+    - app/Models/Product.php
+    - app/Models/Order.php
+    - app/Models/OrderItem.php
+    - app/Models/Itinerary.php
+    - app/Models/ItineraryItem.php
+    - app/Models/Payment.php
+    - app/Models/Invoice.php
+    - database/seeders/McpServerSeeder.php
+    - database/seeders/McpToolSeeder.php
+    - database/seeders/WebhookEndpointSeeder.php
+    - database/seeders/WebhookDeliverySeeder.php
+    - database/seeders/ConversationSeeder.php
+    - database/seeders/ChatMessageSeeder.php
+    - database/seeders/AgentTaskSeeder.php
+    - database/seeders/VillaSeeder.php
+    - database/seeders/VillaRateSeeder.php
+    - database/seeders/VillaBookingSeeder.php
+    - database/seeders/TaxiSeeder.php
+    - database/seeders/TaxiBookingSeeder.php
+    - database/seeders/RestaurantSeeder.php
+    - database/seeders/RestaurantBookingSeeder.php
+    - database/seeders/WinerySeeder.php
+    - database/seeders/WineryVisitSeeder.php
+    - database/seeders/TourSeeder.php
+    - database/seeders/TourBookingSeeder.php
+    - database/seeders/ProductCategorySeeder.php
+    - database/seeders/ProductSeeder.php
+    - database/seeders/OrderSeeder.php
+    - database/seeders/OrderItemSeeder.php
+    - database/seeders/ItinerarySeeder.php
+    - database/seeders/ItineraryItemSeeder.php
+    - database/seeders/PaymentSeeder.php
+    - database/seeders/InvoiceSeeder.php
+models:
+    McpServer: { name: string, slug: 'string unique', agent_type: 'enum:orchestrator,villa,taxi,restaurant,winery,tour,store default:orchestrator', base_url: string, transport: 'enum:http,sse,websocket default:http', auth_token: 'string nullable', description: 'text nullable', status: 'enum:online,offline,error default:offline', last_heartbeat_at: 'datetime nullable', relationships: { hasMany: 'McpTool, AgentTask' } }
+    McpTool: { mcp_server_id: 'id foreign', name: string, slug: 'string index', description: 'text nullable', category: 'enum:booking,catalog,payment,info,other default:other', input_schema: 'text nullable', is_enabled: 'boolean default:true', call_count: 'integer default:0' }
+    WebhookEndpoint: { name: string, url: string, agent_type: 'enum:orchestrator,villa,taxi,restaurant,winery,tour,store default:orchestrator', event_types: 'text nullable', secret: 'string nullable', is_active: 'boolean default:true', last_triggered_at: 'datetime nullable', relationships: { hasMany: WebhookDelivery } }
+    WebhookDelivery: { webhook_endpoint_id: 'id foreign', event_name: 'string index', payload: 'text nullable', response_code: 'integer nullable', response_body: 'text nullable', status: 'enum:pending,delivered,failed default:pending', attempts: 'integer default:0', delivered_at: 'datetime nullable' }
+    Conversation: { user_id: 'id foreign nullable', reference: 'string unique', channel: 'enum:web,whatsapp,api,phone default:web', title: 'string nullable', detected_intent: 'string nullable', assigned_agent: 'enum:orchestrator,villa,taxi,restaurant,winery,tour,store default:orchestrator', status: 'enum:open,waiting,resolved,archived default:open', last_message_at: 'datetime nullable', relationships: { hasMany: 'ChatMessage, AgentTask' } }
+    ChatMessage: { conversation_id: 'id foreign', sender: 'enum:user,orchestrator,agent,system default:user', agent_name: 'string nullable', body: text, payload: 'text nullable', read_at: 'datetime nullable' }
+    AgentTask: { conversation_id: 'id foreign nullable', mcp_server_id: 'id foreign nullable', agent_type: 'enum:orchestrator,villa,taxi,restaurant,winery,tour,store default:orchestrator', tool_name: 'string index', status: 'enum:queued,running,completed,failed default:queued', input_payload: 'text nullable', output_payload: 'text nullable', error_message: 'text nullable', started_at: 'datetime nullable', completed_at: 'datetime nullable' }
+    Villa: { name: string, slug: 'string unique', location: 'string index', address: 'string nullable', description: 'text nullable', bedrooms: 'integer default:1', bathrooms: 'integer default:1', max_guests: 'integer default:2', base_price_per_night: 'decimal:8,2', cleaning_fee: 'decimal:8,2 default:0', amenities: 'text nullable', main_image: 'string nullable', status: 'enum:published,draft,maintenance default:draft', softdeletes: softDeletes, relationships: { hasMany: 'VillaRate, VillaBooking' } }
+    VillaRate: { villa_id: 'id foreign', label: string, start_date: 'date index', end_date: date, price_per_night: 'decimal:8,2', min_nights: 'integer default:1', extra_guest_fee: 'decimal:8,2 default:0' }
+    VillaBooking: { villa_id: 'id foreign', user_id: 'id foreign nullable', reference: 'string unique', guest_name: string, guest_email: string, guest_phone: 'string nullable', check_in: 'date index', check_out: date, guests: 'integer default:1', nights: 'integer default:1', total_price: 'decimal:10,2', status: 'enum:pending,confirmed,cancelled,completed default:pending', payment_status: 'enum:unpaid,paid,refunded default:unpaid', notes: 'text nullable' }
+    Taxi: { driver_name: string, vehicle_model: string, plate: 'string unique', capacity: 'integer default:4', phone: 'string nullable', zone: 'string nullable', base_fare: 'decimal:8,2', price_per_km: 'decimal:8,2', is_available: 'boolean default:true', photo: 'string nullable', relationships: { hasMany: TaxiBooking } }
+    TaxiBooking: { taxi_id: 'id foreign', user_id: 'id foreign nullable', reference: 'string unique', service_type: 'enum:transfer,airport,tour default:transfer', guest_name: string, guest_phone: 'string nullable', pickup_location: string, dropoff_location: 'string nullable', pickup_at: 'datetime index', passengers: 'integer default:1', duration_hours: 'decimal:4,1 nullable', total_price: 'decimal:10,2', status: 'enum:pending,confirmed,in_progress,completed,cancelled default:pending', payment_status: 'enum:unpaid,paid,refunded default:unpaid', notes: 'text nullable' }
+    Restaurant: { name: string, slug: 'string unique', cuisine_type: 'string index', location: string, description: 'text nullable', phone: 'string nullable', capacity: 'integer default:40', opening_time: 'string nullable', closing_time: 'string nullable', price_range: 'enum:budget,mid,premium default:mid', image: 'string nullable', status: 'enum:active,inactive default:active', relationships: { hasMany: RestaurantBooking } }
+    RestaurantBooking: { restaurant_id: 'id foreign', user_id: 'id foreign nullable', reference: 'string unique', guest_name: string, guest_email: string, guest_phone: 'string nullable', reserved_at: 'datetime index', party_size: 'integer default:2', special_requests: 'text nullable', status: 'enum:pending,confirmed,seated,cancelled,no_show default:pending' }
+    Winery: { name: string, slug: 'string unique', region: 'string index', address: 'string nullable', description: 'text nullable', phone: 'string nullable', visit_price: 'decimal:8,2', tasting_included: 'boolean default:true', capacity_per_visit: 'integer default:10', image: 'string nullable', status: 'enum:active,inactive default:active', relationships: { hasMany: WineryVisit } }
+    WineryVisit: { winery_id: 'id foreign', user_id: 'id foreign nullable', reference: 'string unique', guest_name: string, guest_email: string, guest_phone: 'string nullable', visit_date: 'date index', visit_time: string, participants: 'integer default:2', total_price: 'decimal:10,2', status: 'enum:pending,confirmed,completed,cancelled default:pending', payment_status: 'enum:unpaid,paid,refunded default:unpaid', notes: 'text nullable' }
+    Tour: { name: string, slug: 'string unique', category: 'enum:boat,taxi,winery,hiking,market default:boat', description: 'text nullable', duration_hours: 'decimal:4,1 default:2', price_per_person: 'decimal:8,2', min_participants: 'integer default:1', max_participants: 'integer default:20', meeting_point: 'string nullable', includes: 'text nullable', image: 'string nullable', status: 'enum:published,draft,archived default:draft', relationships: { hasMany: TourBooking } }
+    TourBooking: { tour_id: 'id foreign', user_id: 'id foreign nullable', reference: 'string unique', guest_name: string, guest_email: string, guest_phone: 'string nullable', tour_date: 'date index', participants: 'integer default:1', total_price: 'decimal:10,2', status: 'enum:pending,confirmed,completed,cancelled default:pending', payment_status: 'enum:unpaid,paid,refunded default:unpaid', notes: 'text nullable' }
+    ProductCategory: { name: string, slug: 'string unique', description: 'text nullable', image: 'string nullable', relationships: { hasMany: Product } }
+    Product: { product_category_id: 'id foreign', name: string, slug: 'string unique', sku: 'string unique', description: 'text nullable', price: 'decimal:8,2', stock: 'integer default:0', unit: 'enum:unit,bottle,box,kg,litre default:unit', origin: 'string nullable', image: 'string nullable', is_featured: 'boolean default:false', status: 'enum:active,draft,archived default:active', relationships: { hasMany: OrderItem } }
+    Order: { user_id: 'id foreign nullable', reference: 'string unique', customer_name: string, customer_email: string, customer_phone: 'string nullable', shipping_address: 'text nullable', subtotal: 'decimal:10,2 default:0', tax_amount: 'decimal:10,2 default:0', total: 'decimal:10,2 default:0', status: 'enum:pending,processing,shipped,delivered,cancelled default:pending', payment_status: 'enum:unpaid,paid,refunded default:unpaid', notes: 'text nullable', relationships: { hasMany: OrderItem } }
+    OrderItem: { order_id: 'id foreign', product_id: 'id foreign', quantity: 'integer default:1', unit_price: 'decimal:8,2', line_total: 'decimal:10,2' }
+    Itinerary: { user_id: 'id foreign nullable', conversation_id: 'id foreign nullable', reference: 'string unique', title: string, customer_name: string, customer_email: string, start_date: 'date nullable', end_date: 'date nullable', total: 'decimal:10,2 default:0', status: 'enum:draft,confirmed,paid,cancelled default:draft', notes: 'text nullable', relationships: { hasMany: ItineraryItem } }
+    ItineraryItem: { itinerary_id: 'id foreign', service_type: 'enum:villa,taxi,tour,winery,restaurant,product default:villa', reference_id: 'integer nullable', title: string, scheduled_at: 'datetime nullable', quantity: 'integer default:1', price: 'decimal:10,2 default:0', status: 'enum:pending,confirmed,cancelled default:pending' }
+    Payment: { user_id: 'id foreign nullable', reference: 'string unique', payable_type: 'enum:villa_booking,taxi_booking,tour_booking,winery_visit,restaurant_booking,order,itinerary default:order', payable_id: 'integer index', amount: 'decimal:10,2', currency: 'enum:EUR,USD,GBP default:EUR', method: 'enum:card,transfer,cash,paypal default:card', status: 'enum:pending,completed,failed,refunded default:pending', transaction_id: 'string nullable', paid_at: 'datetime nullable', notes: 'text nullable', relationships: { hasMany: Invoice } }
+    Invoice: { payment_id: 'id foreign nullable', user_id: 'id foreign nullable', invoice_number: 'string unique', customer_name: string, customer_tax_id: 'string nullable', billing_address: 'text nullable', issue_date: 'date index', due_date: 'date nullable', subtotal: 'decimal:10,2 default:0', tax_amount: 'decimal:10,2 default:0', total: 'decimal:10,2 default:0', status: 'enum:draft,issued,paid,cancelled default:draft', pdf_path: 'string nullable', notes: 'text nullable' }

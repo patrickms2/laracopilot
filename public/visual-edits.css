@@ -1,0 +1,4 @@
+body > section > div > div:nth-of-type(2) {
+  font-weight: 600 !important;
+}
+

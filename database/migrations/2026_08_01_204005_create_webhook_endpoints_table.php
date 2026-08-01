@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::disableForeignKeyConstraints();
+
+        Schema::create('webhook_endpoints', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('url');
+            $table->enum('agent_type', ["orchestrator","villa","taxi","restaurant","winery","tour","store"])->default('orchestrator');
+            $table->text('event_types')->nullable();
+            $table->string('secret')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->dateTime('last_triggered_at')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::enableForeignKeyConstraints();
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('webhook_endpoints');
+    }
+};
