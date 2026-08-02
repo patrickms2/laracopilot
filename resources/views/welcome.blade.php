@@ -8,7 +8,7 @@
             <div class='relative mx-auto flex min-h-[86vh] max-w-6xl flex-col justify-end px-4 pb-10 pt-16 sm:px-6'>
                 <p class='text-[11px] uppercase tracking-[0.28em] text-[#E8C98B]'>Lanzarote · concierge integrado</p>
                 <h1 class='display mt-4 max-w-2xl text-[2.7rem] leading-[1.05] tracking-tight text-[#FAF6EF] sm:text-6xl'>La isla, resuelta<br>antes de que la pidas.</h1>
-                <p class='mt-5 max-w-lg text-base leading-relaxed text-[#FAF6EF]/75'>Dinos qué te apetece. Nosotros encadenamos el taxi que te recoge, la bodega que te espera, la mesa reservada, el regreso a casa y la caja de vino ya preparada.</p>
+                <p class='mt-5 max-w-lg text-base leading-relaxed text-[#FAF6EF]/75'>Dicta y nosotros hacemos. Dinos qué te apetece. Nosotros encadenamos el taxi que te recoge, la bodega que te espera, la mesa reservada, el regreso a casa y la caja de vino ya preparada.</p>
 
                 <div class='mt-8 rounded-3xl border border-white/15 bg-[#FAF6EF]/95 p-3 shadow-2xl shadow-black/30 backdrop-blur sm:p-4'>
                     <div class='grid gap-2 sm:grid-cols-2'>
